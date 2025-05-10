@@ -10,21 +10,21 @@
         </div>
         <div class="home-rec">
             <div class="home-rec-title mb-4">
-                <h2>Popular</h2>
+                <h2>Popular Shoes</h2>
             </div>
         </div>
         <div class="home-rec-cards d-flex gap-4">
             {% for product in products %}
                 <a href="{{ product.get_absolute_url }}" class="home-link d-flex flex-column align-items-center text-center">
-                    <img src="{% if product.image %} {{ product.img.url }}{% else %}{% static 'img/yvs-1.png' %} {% endif %}" class="card-img" alt="The most popular product">
+                    <img src="{% if product.image %}{{ product.image.url }}{{ product.img.url }}{% else %}{% static 'img/yvs-khaki.png' %} {% endif %}" class="card-img" alt="The most popular product">
                     <h3 class="card-title"> {{ product.name }} </h3>
                     {% if product.discount %}
                         <div class="cart-discount d-flex gap-2">
-                            <p class="line"> {{ product.price }} </p>
-                            <p> {{ product.sell_price }} </p>
+                            <p class="line">$ {{ product.price }} </p>
+                            <p>$ {{ product.sell_price }} </p>
                         </div>
                     {% else %}
-                            <p class="price"> {{ product.price }} </p>
+                            <p class="price">$ {{ product.price }}</p>
                     {% endif %}
                 </a>
             {% endfor %}
