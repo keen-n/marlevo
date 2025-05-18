@@ -1,4 +1,4 @@
-{% extends "main/base.html" %}
+{% extends 'main/base.html' %}
 {% load static %}
 
 {% block title %}Home{% endblock title %}
@@ -6,25 +6,25 @@
 {% block content %}
     <section class="home d-flex flex-column">
         <div class="home-title d-flex flex-column align-items-center">
-            <a href="#" class="home-link mt-4">ALL PRODUCTS</a>
+            <a href="#" class="home-btn mt-4">ALL PRODUCTS</a>
         </div>
-        <div class="home-rec">
-            <div class="home-rec-title mb-4">
-                <h2>Popular Shoes</h2>
+        <div class="home-recomendation">
+            <div class="rec-title mb-4">
+                <h3><span>Popular Accessories</span></h3>
             </div>
         </div>
-        <div class="home-rec-cards d-flex gap-4">
+        <div class="home-cardss d-flex gap-4">
             {% for product in products %}
-                <a href="{{ product.get_absolute_url }}" class="home-link d-flex flex-column align-items-center text-center">
-                    <img src="{% if product.image %}{{ product.image.url }}{{ product.img.url }}{% else %}{% static 'img/yvs-khaki.png' %} {% endif %}" class="card-img" alt="The most popular product">
-                    <h3 class="card-title"> {{ product.name }} </h3>
+                <a href="{{ product.get_absolute_url }}" class="home-card d-flex flex-column align-items-center text-center">
+                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/noimage.jpg' %}{% endif %}" class="card-img" alt="">
+                    <h5 class="title-card">{{ product.name }}</h5>
                     {% if product.discount %}
                         <div class="cart-discount d-flex gap-2">
-                            <p class="line">$ {{ product.price }} </p>
-                            <p>$ {{ product.sell_price }} </p>
+                            <p class="line">$ {{ product.price }}</p>
+                            <p class="price pt-2">$ {{ product.sell_price }}</p>
                         </div>
                     {% else %}
-                            <p class="price">$ {{ product.price }}</p>
+                        <p class="price">$ {{ product.price }}</p>
                     {% endif %}
                 </a>
             {% endfor %}
